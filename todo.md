@@ -4,13 +4,17 @@
 
 2.Tailwind configaration.
 
-3.Create the required UI design.
+3.Create a dashboar component.
 
-4.Base design implementation.
+4.Create the required UI design.
 
-5.Call data from the api.
+5.Implement the design in the dashboard component.
 
-6.Show every specific data in the related box.
+6.Call data from the api.
 
-7.Check if everything works.
+7.Show every specific data in the related box.
+
+8.Add drag and drop option in the tasks.
+
+9.Check if everything works.
 
