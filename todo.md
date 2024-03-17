@@ -4,7 +4,7 @@
 
 2.Tailwind configaration.
 
-3.Create a dashboar component.
+3.Create a dashboard component.
 
 4.Create the required UI design.
 
