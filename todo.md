@@ -10,11 +10,13 @@
 
 5.Implement the design in the dashboard component.
 
-6.Call data from the api.
+6.Create local database using json server.
 
-7.Show every specific data in the related box.
+7.Call data from the api from json server.
 
-8.Add drag and drop option along with specific api calling.
+8.Show every specific data in the related box.
 
-9.Check if everything works.
+9.Add drag and drop option along with specific api calling.
+
+10.Check if everything works.
 
