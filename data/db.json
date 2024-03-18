@@ -1,0 +1,54 @@
+{
+  "tasks": [
+    {
+      "id": "1",
+      "taskName": "Eco-Friendly Delivery Service",
+      "status": "1"
+    },
+    {
+      "id": "2",
+      "taskName": "Virtual Gym Platform",
+      "status": "1"
+    },
+    {
+      "id": "3",
+      "taskName": "Smart Recycling Bins",
+      "status": "2"
+    },
+    {
+      "id": "4",
+      "taskName": "AI-Powered Mental Health Chatbot",
+      "status": "4"
+    },
+    {
+      "id": "5",
+      "taskName": "Urban Vertical Farming Towers",
+      "status": "2"
+    },
+    {
+      "id": "6",
+      "taskName": "Community Solar Sharing Platform",
+      "status": "3"
+    },
+    {
+      "id": "7",
+      "taskName": "Augmented Reality Navigation Glasses",
+      "status": "2"
+    },
+    {
+      "id": "8",
+      "taskName": "Blockchain-Based Voting System",
+      "status": "1"
+    },
+    {
+      "id": "9",
+      "taskName": "AI-Powered Personalized Learning App",
+      "status": "4"
+    },
+    {
+      "id": "10",
+      "taskName": "Smart Home Energy Management System",
+      "status": "1"
+    }
+  ]
+}
