@@ -23,8 +23,15 @@ export class DashboardComponent {
   }
 
   loadTasks(): void {
-    this.getTasks().subscribe((res: any[])=>{
-      console.log(res)
+    this.getTasks().subscribe({
+      next: (res: any[]) => {
+        console.log(res);
+      },
+      error: (error: any) => {
+        if (error.status === 404) {
+          console.log(`Error occurred: ${error.statusText}-${error.status}`);
+        }
+      }
     });
   }
 }
