@@ -18,10 +18,10 @@
     5. ~~In 'db.json' file, create specific data for the task board~~.
     6. ~~Run the application with concurrently command~~.
 
-7. Call data from the API json server.
-    1. Call data in dashboard.component.ts file from database of local json-server.
-    2. Handle error using error handler.
-    3. Check in the console if the data called properly.
+7. ~~Call data from the API json server.~~
+    1. ~~Call data in dashboard.component.ts file from database of local json-server.~~
+    2. ~~Handle error using error handler.~~
+    3. ~~Check in the console if the data called properly.~~
 
 
 8. Show every specific data in the related box.
