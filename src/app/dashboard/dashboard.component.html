@@ -8,19 +8,19 @@
       <div class="flex justify-center w-full flex-wrap">
 
         <div class="p-4 w-3/12">
-          <app-task-type [tasks]="tasks"  color="boxColor1" title="title1"></app-task-type>
+          <app-task-type [tasks]="getTasksByStatus('1')"  color="boxColor1" title="title1"></app-task-type>
         </div>
 
         <div class="p-4 w-3/12">
-          <app-task-type [tasks]="tasks"  color="boxColor2" title="title2"></app-task-type>
+          <app-task-type [tasks]="getTasksByStatus('2')"  color="boxColor2" title="title2"></app-task-type>
         </div>
 
         <div class="p-4 w-3/12">
-          <app-task-type [tasks]="tasks"  color="boxColor3" title="title3"></app-task-type>
+          <app-task-type [tasks]="getTasksByStatus('3')"  color="boxColor3" title="title3"></app-task-type>
         </div>
 
         <div class="p-4 w-3/12">
-          <app-task-type [tasks]="tasks"  color="boxColor4" title="title4"></app-task-type>
+          <app-task-type [tasks]="getTasksByStatus('4')"  color="boxColor4" title="title4"></app-task-type>
         </div>
 
       </div>

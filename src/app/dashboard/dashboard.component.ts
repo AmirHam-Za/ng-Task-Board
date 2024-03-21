@@ -37,6 +37,9 @@ export class DashboardComponent {
       }
     });
   }
-  
+
+  getTasksByStatus(status: string): any[] {
+    return this.tasks.filter(task => task.status === status);
+  }
 }
 
