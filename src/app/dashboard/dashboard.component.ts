@@ -9,12 +9,12 @@ import { Observable } from 'rxjs';
 })
 export class DashboardComponent {
 
-   tasks: any[] = [];
+  tasks: any[] = [];
 
   constructor(
     private _http: HttpClient,
 
-  ){}
+  ) { }
 
   ngOnInit(): void {
     this.loadTasks()
@@ -28,7 +28,7 @@ export class DashboardComponent {
     this.getTasks().subscribe({
       next: (res: any[]) => {
         console.log(res);
-        this.tasks = res.slice(0, 5);
+        this.tasks = res;
       },
       error: (error: any) => {
         if (error.status === 404) {
@@ -37,5 +37,6 @@ export class DashboardComponent {
       }
     });
   }
+  
 }
 
