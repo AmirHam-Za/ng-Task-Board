@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -8,6 +8,8 @@ import { Observable } from 'rxjs';
   styleUrl: './dashboard.component.css'
 })
 export class DashboardComponent {
+
+   tasks: any[] = [];
 
   constructor(
     private _http: HttpClient,
@@ -26,6 +28,7 @@ export class DashboardComponent {
     this.getTasks().subscribe({
       next: (res: any[]) => {
         console.log(res);
+        this.tasks = res.slice(0, 5);
       },
       error: (error: any) => {
         if (error.status === 404) {
