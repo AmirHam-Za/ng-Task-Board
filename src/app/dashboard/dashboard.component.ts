@@ -20,6 +20,8 @@ export class DashboardComponent {
     this.loadTasks()
   }
 
+  // TODO:create service to handle api and other functions related to the task board
+  // TODO:create interface to handle data conveniently
   getTasks(): Observable<any[]> {
     return this._http.get<any[]>('http://localhost:3000/tasks');
   }

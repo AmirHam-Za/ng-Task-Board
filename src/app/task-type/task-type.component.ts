@@ -10,6 +10,7 @@ export class TaskTypeComponent {
   @Input() color: string = '';
   @Input() title: string = '';
 
+  // TODO:refactor by creating title and color objects for more dynamicity
   taskBoxColor(): string {
     return this.color === 'boxColor1' ? 'bg-indigo-200' :
            this.color === 'boxColor2' ? 'bg-red-200' :
