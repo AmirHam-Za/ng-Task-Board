@@ -4,7 +4,7 @@
 
   <div class="flex flex-col gap-2">
 
-    <app-task [tasks]="tasks"></app-task>
+    <app-task [tasks]="tasks" (sendDataToMiddle)="receiveTaskDataFromChild($event)"></app-task>
   </div>
 
 </div>

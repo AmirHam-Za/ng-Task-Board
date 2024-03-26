@@ -5,22 +5,20 @@ import { Observable } from 'rxjs';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrl: './dashboard.component.css'
+  styleUrl: './dashboard.component.css',
 })
 export class DashboardComponent {
-
   tasks: any[] = [];
   title: any = [];
+  currentItem: any;
+  taskData: any[] = [];
 
-  constructor(
-    private _http: HttpClient,
-
-  ) { }
+  constructor(private _http: HttpClient) {}
 
   ngOnInit(): void {
-    this.loadTasks()
+    this.loadTasks();
     this.title = this.taskBoxTitleObjects();
-    console.log(this.title)
+    console.log(this.title);
   }
 
   // TODO:create service to handle api an other functions related to the dashboard
@@ -39,12 +37,12 @@ export class DashboardComponent {
         if (error.status === 404) {
           console.log(`Error occurred: ${error.statusText}-${error.status}`);
         }
-      }
+      },
     });
   }
 
   getTasksByStatus(status: string): any[] {
-    return this.tasks.filter(task => task.status === status);
+    return this.tasks.filter((task) => task.status === status);
   }
 
   taskBoxTitleObjects() {
@@ -52,8 +50,44 @@ export class DashboardComponent {
       { id: 1, title: 'IDEAS' },
       { id: 2, title: 'RESEARCH' },
       { id: 3, title: 'TODO' },
-      { id: 4, title: 'DONE' }
+      { id: 4, title: 'DONE' },
     ];
-    return titleObjects
+    return titleObjects;
+  }
+
+  receiveTaskDataFromChild(taskData: any) {
+    this.currentItem = taskData;
+    console.log(
+      'currentItem in dashboard from taskType Component',
+      this.taskData
+    );
+  }
+
+  onDragOver(event: any) {
+    console.log('onDragOver');
+    event.preventDefault();
+  }
+
+  onDrop(event: any, status: string) {
+    event.preventDefault();
+
+    const record = this.tasks.find((m) => m.id == this.currentItem.id);
+
+    if (record !== undefined) {
+      record.status = status;
+      this.updateTask();
+    }
+  }
+
+  updateTask(): void {
+    const records = this.tasks.find((m) => m.id == this.currentItem.id);
+    this.updateTaskAsync(records).subscribe(() => {});
+  }
+
+  // TODO: manage the api in a service.
+  updateTaskAsync(task: any): Observable<any> {
+    const url = 'http://localhost:3000/tasks/' + task.id;
+
+    return this._http.put<any>(url, task);
   }
 }

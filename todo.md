@@ -36,15 +36,15 @@
 
     3. ~~Check in the console if drag and drop works properly.~~
 
-    4. Implement drag and drop options in our tasks.
+    4. ~~Implement drag and drop options in our tasks.~~
 
-    5. Double check if drag and drop works in our project.
+    5. ~~Double check if drag and drop works in our project.~~
 
-    6. By dropping a task in a box, an api should be called and changes the task's status according to the box.
+    6. ~~By dropping a task in a box, an api should be called and changes the task's status according to the box.~~
 
-    7. Manage api calling interaction with drag and drop operation.
+    7. ~~Manage api calling interaction with drag and drop operation.~~
 
-    8. Check if api calling and drag & drop option works properly as it should be.
+    8. ~~Check if api calling and drag & drop option works properly as it should be.~~
 
     9. Refactor code and structure.
     

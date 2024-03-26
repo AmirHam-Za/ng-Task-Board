@@ -1,4 +1,4 @@
-<div *ngFor="let task of tasks" class="">
+<div *ngFor="let task of tasks" draggable="true" (dragstart)="onDragStart(task)">
 
   <p class="bg-white my-1 p-2 rounded shadow-md opacity-65">{{ task.taskName }}<p>
 </div>
