@@ -30,11 +30,11 @@
     4. Refactor code & structure.
 
 9. Add drag and drop option along with specific API calling.
-    1. Search and find out about drag and drop operation.
+    1. ~~Search and find out about drag and drop operation.~~
 
-    2. Experiment drag and drop operation in a  new fresh setup.
+    2. ~~Experiment drag and drop operation in a  new fresh setup.~~
 
-    3. Check in the console if drag and drop works properly.
+    3. ~~Check in the console if drag and drop works properly.~~
 
     4. Implement drag and drop options in our tasks.
 
