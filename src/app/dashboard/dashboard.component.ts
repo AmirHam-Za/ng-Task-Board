@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -10,6 +10,7 @@ import { Observable } from 'rxjs';
 export class DashboardComponent {
 
   tasks: any[] = [];
+  title: any = [];
 
   constructor(
     private _http: HttpClient,
@@ -18,10 +19,12 @@ export class DashboardComponent {
 
   ngOnInit(): void {
     this.loadTasks()
+    this.title = this.taskBoxTitleObjects();
+    console.log(this.title)
   }
 
-  // TODO:create service to handle api and other functions related to the task board
-  // TODO:create interface to handle data conveniently
+  // TODO:create service to handle api an other functions related to the dashboard
+  // TODO:create interface to handle data
   getTasks(): Observable<any[]> {
     return this._http.get<any[]>('http://localhost:3000/tasks');
   }
@@ -43,5 +46,14 @@ export class DashboardComponent {
   getTasksByStatus(status: string): any[] {
     return this.tasks.filter(task => task.status === status);
   }
-}
 
+  taskBoxTitleObjects() {
+    const titleObjects = [
+      { id: 1, title: 'IDEAS' },
+      { id: 2, title: 'RESEARCH' },
+      { id: 3, title: 'TODO' },
+      { id: 4, title: 'DONE' }
+    ];
+    return titleObjects
+  }
+}
