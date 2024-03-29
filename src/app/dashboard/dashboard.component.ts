@@ -12,7 +12,7 @@ export class DashboardComponent {
   tasks :Task[] = [];
   title :any;
   currentItem :Task | undefined;
-  taskData: Task[] = [];
+
 
   constructor(private _taskService: TaskService) {}
 
