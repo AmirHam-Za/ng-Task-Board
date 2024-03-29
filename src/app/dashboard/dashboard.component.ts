@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { Observable } from 'rxjs';
+import { TaskService } from '../services/task/task.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -13,7 +13,7 @@ export class DashboardComponent {
   currentItem: any;
   taskData: any[] = [];
 
-  constructor(private _http: HttpClient) {}
+  constructor(private _taskService: TaskService, private _http: HttpClient) {}
 
   ngOnInit(): void {
     this.loadTasks();
@@ -21,14 +21,10 @@ export class DashboardComponent {
     console.log(this.title);
   }
 
-  // TODO:create service to handle api an other functions related to the dashboard
   // TODO:create interface to handle data
-  getTasks(): Observable<any[]> {
-    return this._http.get<any[]>('http://localhost:3000/tasks');
-  }
 
   loadTasks(): void {
-    this.getTasks().subscribe({
+    this._taskService.getTasksAsync().subscribe({
       next: (res: any[]) => {
         console.log(res);
         this.tasks = res;
@@ -57,10 +53,6 @@ export class DashboardComponent {
 
   receiveTaskDataFromChild(taskData: any) {
     this.currentItem = taskData;
-    console.log(
-      'currentItem in dashboard from taskType Component',
-      this.taskData
-    );
   }
 
   onDragOver(event: any) {
@@ -81,13 +73,7 @@ export class DashboardComponent {
 
   updateTask(): void {
     const records = this.tasks.find((m) => m.id == this.currentItem.id);
-    this.updateTaskAsync(records).subscribe(() => {});
+    this._taskService.updateTaskAsync(records).subscribe(() => {});
   }
 
-  // TODO: manage the api in a service.
-  updateTaskAsync(task: any): Observable<any> {
-    const url = 'http://localhost:3000/tasks/' + task.id;
-
-    return this._http.put<any>(url, task);
-  }
 }

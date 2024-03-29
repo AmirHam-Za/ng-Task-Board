@@ -27,7 +27,7 @@
     1. ~~Create a component named TaskTypeComponent for all boxes and implement it in the DashboardComponent.~~
     2. ~~Create a component named TaskComponent for all tasks and implement it in the TaskTypeComponent .~~
     3. ~~Show the dynamic data from DashboardComponent in task.component.html.~~  
-    4. Refactor code & structure.
+    4. ~~Refactor code & structure.~~
 
 9. Add drag and drop option along with specific API calling.
     1. ~~Search and find out about drag and drop operation.~~

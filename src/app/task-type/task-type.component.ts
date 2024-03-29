@@ -23,12 +23,8 @@ export class TaskTypeComponent {
   }
 
   receiveTaskDataFromChild(taskData: any) {
-    console.log('Child to middle:', taskData);
-    console.log('Curent Item in taskType comppnent from task component:', taskData);
     this.taskData = taskData
-
     this.sendDataToParent.emit(this.taskData);
-    console.log('>>>>>>', this.taskData)
   }
 }
 
