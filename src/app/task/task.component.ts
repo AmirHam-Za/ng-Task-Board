@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Task } from '../interfaces/task.interface';
 
 @Component({
   selector: 'app-task',
@@ -6,13 +7,13 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   styleUrl: './task.component.css',
 })
 export class TaskComponent {
-  @Input() tasks: any[] = [];
+  @Input() tasks: Task[] = [];
 
-  currentItem: any;
+  currentItem: Task | undefined;
 
-  @Output() sendDataToMiddle: EventEmitter<any> = new EventEmitter<any>();
+  @Output() sendDataToMiddle: EventEmitter<Task> = new EventEmitter<Task>();
 
-  onDragStart(task: any) {
+  onDragStart(task: Task) {
     this.currentItem = task;
     this.sendDataToMiddle.emit(this.currentItem);
   }

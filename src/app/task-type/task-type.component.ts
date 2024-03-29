@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Task } from '../interfaces/task.interface';
 
 @Component({
   selector: 'app-task-type',
@@ -6,13 +7,13 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   styleUrl: './task-type.component.css'
 })
 export class TaskTypeComponent {
-  @Input() tasks: any[] = [];
+  @Input() tasks: Task[] = [];
   @Input() color: string = '';
-  @Input() title: any  = '';
+  @Input() title: string  = '';
 
-  taskData: any =[]
+  taskData: Task | undefined
 
-  @Output() sendDataToParent: EventEmitter<any> = new EventEmitter<any>();
+  @Output() sendDataToParent: EventEmitter<Task> = new EventEmitter<Task>();
 
   // TODO:make more dynamic by creating box color object
   taskBoxColor(): string {
@@ -22,7 +23,7 @@ export class TaskTypeComponent {
            this.color === 'boxColor4' ? 'bg-yellow-200' : 'bg-white';
   }
 
-  receiveTaskDataFromChild(taskData: any) {
+  receiveTaskDataFromChild(taskData: Task) {
     this.taskData = taskData
     this.sendDataToParent.emit(this.taskData);
   }

@@ -1,19 +1,20 @@
-import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { TaskService } from '../services/task/task.service';
-
+import { Task } from '../interfaces/task.interface';
+import { HttpErrorResponse } from '@angular/common/http';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css',
 })
-export class DashboardComponent {
-  tasks: any[] = [];
-  title: any = [];
-  currentItem: any;
-  taskData: any[] = [];
 
-  constructor(private _taskService: TaskService, private _http: HttpClient) {}
+export class DashboardComponent {
+  tasks :Task[] = [];
+  title :any;
+  currentItem :Task | undefined;
+  taskData: Task[] = [];
+
+  constructor(private _taskService: TaskService) {}
 
   ngOnInit(): void {
     this.loadTasks();
@@ -21,23 +22,20 @@ export class DashboardComponent {
     console.log(this.title);
   }
 
-  // TODO:create interface to handle data
-
   loadTasks(): void {
     this._taskService.getTasksAsync().subscribe({
-      next: (res: any[]) => {
-        console.log(res);
+      next: (res: Task[]) => {
         this.tasks = res;
       },
-      error: (error: any) => {
+      error: (error: HttpErrorResponse) => {
         if (error.status === 404) {
           console.log(`Error occurred: ${error.statusText}-${error.status}`);
         }
-      },
-    });
+      }
+    })
   }
 
-  getTasksByStatus(status: string): any[] {
+  getTasksByStatus(status: string): Task[] {
     return this.tasks.filter((task) => task.status === status);
   }
 
@@ -51,19 +49,17 @@ export class DashboardComponent {
     return titleObjects;
   }
 
-  receiveTaskDataFromChild(taskData: any) {
+  receiveTaskDataFromChild(taskData: Task) {
     this.currentItem = taskData;
   }
 
-  onDragOver(event: any) {
-    console.log('onDragOver');
+  onDragOver(event: DragEvent) {
     event.preventDefault();
   }
 
-  onDrop(event: any, status: string) {
+  onDrop(event: DragEvent, status: string) {
     event.preventDefault();
-
-    const record = this.tasks.find((m) => m.id == this.currentItem.id);
+    const record = this.tasks.find((m) => m.id == this.currentItem?.id);
 
     if (record !== undefined) {
       record.status = status;
@@ -72,8 +68,19 @@ export class DashboardComponent {
   }
 
   updateTask(): void {
-    const records = this.tasks.find((m) => m.id == this.currentItem.id);
-    this._taskService.updateTaskAsync(records).subscribe(() => {});
-  }
+    const records = this.tasks.find((m) => m.id == this.currentItem?.id);
+
+    if (records !== undefined) {
+        this._taskService.updateTaskAsync(records).subscribe({
+          error: (error: HttpErrorResponse) => {
+            if (error.status === 404) {
+              console.log(`Update Error occurred: ${error.statusText}-${error.status}`);
+            }
+          }
+        });
+    } else {
+        console.error('Task not found');
+    }
+}
 
 }
