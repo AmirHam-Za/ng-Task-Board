@@ -11,9 +11,9 @@ export class TaskTypeComponent {
   @Input() color: string = '';
   @Input() title: string  = '';
 
-  taskData: Task | undefined
+  currentItem: Task | undefined
 
-  @Output() sendDataToParent: EventEmitter<Task> = new EventEmitter<Task>();
+  @Output() emitCurrentItem: EventEmitter<Task> = new EventEmitter<Task>();
 
   // TODO:make more dynamic by creating box color object
   taskBoxColor(): string {
@@ -23,9 +23,10 @@ export class TaskTypeComponent {
            this.color === 'boxColor4' ? 'bg-yellow-200' : 'bg-white';
   }
 
-  receiveTaskDataFromChild(taskData: Task) {
-    this.taskData = taskData
-    this.sendDataToParent.emit(this.taskData);
+  receiveCurrentItem(event: Task) {
+    this.currentItem = event
+
+    this.emitCurrentItem.emit(this.currentItem);
   }
 }
 

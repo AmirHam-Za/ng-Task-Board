@@ -7,14 +7,15 @@ import { Task } from '../interfaces/task.interface';
   styleUrl: './task.component.css',
 })
 export class TaskComponent {
+
   @Input() tasks: Task[] = [];
 
   currentItem: Task | undefined;
 
-  @Output() sendDataToMiddle: EventEmitter<Task> = new EventEmitter<Task>();
+  @Output() emitCurrentItem: EventEmitter<Task> = new EventEmitter<Task>();
 
-  onDragStart(task: Task) {
-    this.currentItem = task;
-    this.sendDataToMiddle.emit(this.currentItem);
+  onDragStart(item: Task) {
+    this.currentItem = item;
+    this.emitCurrentItem.emit(this.currentItem);
   }
 }

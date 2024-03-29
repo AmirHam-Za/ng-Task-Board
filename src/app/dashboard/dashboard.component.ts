@@ -19,7 +19,6 @@ export class DashboardComponent {
   ngOnInit(): void {
     this.loadTasks();
     this.title = this.taskBoxTitleObjects();
-    console.log(this.title);
   }
 
   loadTasks(): void {
@@ -49,7 +48,7 @@ export class DashboardComponent {
     return titleObjects;
   }
 
-  receiveTaskDataFromChild(taskData: Task) {
+  receiveCurrentItem(taskData: Task) {
     this.currentItem = taskData;
   }
 
