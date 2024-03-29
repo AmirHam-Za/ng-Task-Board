@@ -11,6 +11,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 export class DashboardComponent {
   tasks :Task[] = [];
   title :any;
+  bgColor :any;
   currentItem :Task | undefined;
 
 
@@ -19,6 +20,7 @@ export class DashboardComponent {
   ngOnInit(): void {
     this.loadTasks();
     this.title = this.taskBoxTitleObjects();
+    this.bgColor = this.taskBgcolorObjects();
   }
 
   loadTasks(): void {
@@ -46,6 +48,16 @@ export class DashboardComponent {
       { id: 4, title: 'DONE' },
     ];
     return titleObjects;
+  }
+
+  taskBgcolorObjects() {
+    const colorObjects = [
+      { id: 1, bgColor: 'bg-indigo-200' },
+      { id: 2, bgColor: 'bg-red-200' },
+      { id: 3, bgColor: 'bg-teal-300' },
+      { id: 4, bgColor: 'bg-yellow-200' },
+    ];
+    return colorObjects;
   }
 
   receiveCurrentItem(taskData: Task) {
