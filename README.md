@@ -1,27 +1,35 @@
-# NgTaskBoard
+# Angular Task Board Application
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.2.2.
+## Description
+This Angular task board application allows users to manage tasks by organizing them into four categories: Ideas, Research, Todo, and Done. Users can transfer tasks between these categories using drag and drop functionality, updating the task status accordingly.
 
-## Development server
+## Installation
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+To run the application locally, follow these steps:
 
-## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
+#### 1 Clone or download the repository:
+```bash
+https://github.com/AmirHam-Za/ng-Task-Board
+```
+#### 2 Run command to install dependencies: 
+```bash
+npm install
+```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+#### 3 Start the JSON server and Angular application concurrently by running:
+```bash
+npm run start
+```
 
-## Running unit tests
+#### 4 Navigate to this link to view the application in the browser:
+```bash
+http://localhost:4200
+```
+## Tools Used
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+- [Angular](https://angular.io/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [JSON Server](https://github.com/typicode/json-server)
+- [Concurrently](https://github.com/kimmobrunfeldt/concurrently)
