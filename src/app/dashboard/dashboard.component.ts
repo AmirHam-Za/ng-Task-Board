@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { TaskService } from '../services/task/task.service';
 import { Task } from '../interfaces/task.interface';
 import { HttpErrorResponse } from '@angular/common/http';
+import { TITLE_OBJECTS } from '../constant/task-type';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -14,6 +15,7 @@ export class DashboardComponent {
   bgColor :any;
   currentItem :Task | undefined;
 
+  titleObjects = TITLE_OBJECTS;
 
   constructor(private _taskService: TaskService) {}
 
@@ -41,13 +43,7 @@ export class DashboardComponent {
   }
 
   taskBoxTitleObjects() {
-    const titleObjects = [
-      { id: 1, title: 'IDEAS' },
-      { id: 2, title: 'RESEARCH' },
-      { id: 3, title: 'TODO' },
-      { id: 4, title: 'DONE' },
-    ];
-    return titleObjects;
+    return this.titleObjects;
   }
 
   taskBgcolorObjects() {
