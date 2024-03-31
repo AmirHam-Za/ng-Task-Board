@@ -3,21 +3,28 @@ import { TaskService } from '../services/task/task.service';
 import { Task } from '../interfaces/task.interface';
 import { HttpErrorResponse } from '@angular/common/http';
 import { TITLE_OBJECTS } from '../constant/task-type';
+import { CdkDragDrop, moveItemInArray, transferArrayItem, CdkDrag, CdkDropList } from '@angular/cdk/drag-drop';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css',
 })
 
+// TODO: review & inspect overall code for improvement & bug fixing
 export class DashboardComponent {
-  tasks :Task[] = [];
-  title :any;
-  bgColor :any;
-  currentItem :Task | undefined;
+  tasks: Task[] = [];
+  title: any;
+  bgColor: any;
+  currentItem: Task | undefined;
+
+  ideas: Task[] = [];
+  research: Task[] = [];
+  todo: Task[] = [];
+  done: Task[] = [];
 
   titleObjects = TITLE_OBJECTS;
 
-  constructor(private _taskService: TaskService) {}
+  constructor(private _taskService: TaskService) { }
 
   ngOnInit(): void {
     this.loadTasks();
@@ -29,6 +36,12 @@ export class DashboardComponent {
     this._taskService.getTasksAsync().subscribe({
       next: (res: Task[]) => {
         this.tasks = res;
+
+        // TODO: this is not working as it should be, work with it
+        this.ideas = res.filter(task => task.status === '1');
+        this.research = res.filter(task => task.status === '2');
+        this.todo = res.filter(task => task.status === '3');
+        this.done = res.filter(task => task.status === '4');
       },
       error: (error: HttpErrorResponse) => {
         if (error.status === 404) {
@@ -64,30 +77,42 @@ export class DashboardComponent {
     event.preventDefault();
   }
 
-  onDrop(event: DragEvent, status: string) {
-    event.preventDefault();
+  drop(event: CdkDragDrop<Task[]>, status: string) {
     const record = this.tasks.find((m) => m.id == this.currentItem?.id);
 
-    if (record !== undefined) {
+    if (record) {
       record.status = status;
       this.updateTask();
     }
+
+    if (event.previousContainer === event.container) {
+      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+
+    } else {
+      transferArrayItem(
+        event.previousContainer.data,
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex,
+      );
+    }
+
   }
 
   updateTask(): void {
     const records = this.tasks.find((m) => m.id == this.currentItem?.id);
 
     if (records !== undefined) {
-        this._taskService.updateTaskAsync(records).subscribe({
-          error: (error: HttpErrorResponse) => {
-            if (error.status === 404) {
-              console.log(`Update Error occurred: ${error.statusText}-${error.status}`);
-            }
+      this._taskService.updateTaskAsync(records).subscribe({
+        error: (error: HttpErrorResponse) => {
+          if (error.status === 404) {
+            console.log(`Update Error occurred: ${error.statusText}-${error.status}`);
           }
-        });
+        }
+      });
     } else {
-        console.error('Task not found');
+      console.error('Task not found');
     }
-}
+  }
 
 }
