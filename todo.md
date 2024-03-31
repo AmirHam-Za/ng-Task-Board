@@ -62,4 +62,4 @@
 
     9. ~~Refactor code and structure.~~
     
-10. Check if everything works.
+10. ~~Check if everything works.~~
