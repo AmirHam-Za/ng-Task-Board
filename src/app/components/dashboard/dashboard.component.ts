@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { TaskService } from '../services/task/task.service';
-import { Task } from '../interfaces/task.interface';
+import { TaskService } from '../../services/task/task.service';
+import { Task } from '../../interfaces/task.interface';
 import { HttpErrorResponse } from '@angular/common/http';
-import { TITLE_OBJECTS } from '../constant/task-type';
+import { TITLE_OBJECTS } from '../../constant/task-type';
 import { CdkDragDrop, moveItemInArray, transferArrayItem, CdkDrag, CdkDropList } from '@angular/cdk/drag-drop';
 @Component({
   selector: 'app-dashboard',
