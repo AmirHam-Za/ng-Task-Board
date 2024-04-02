@@ -63,3 +63,33 @@
     9. ~~Refactor code and structure.~~
     
 10. ~~Check if everything works.~~
+
+11. Add a button next to the task box title.
+
+    1. Create "Add Task" button on the right of the task title.
+    
+    2. Add SVG icon on the left of the button text.
+
+12. After clicking the button a popup should open.
+    1. Design the UI of the popup including input field(s) and submit button in a different project.
+
+    2. Add the popup in the specific component of our project
+
+    3. Implement click event functionality in the "Add Task" button with the popup opening. 
+
+    4. Check if the pop up works accordingly the button is clicked.
+
+13. Clicking the submit button, tasks should be added and the popup should close.
+
+    1. Impement Data binding option in the input field of the popup.
+
+    2. Create the api calling function to add a new task.
+
+    3. Add a click event in the submit button to execute api calling function.
+
+    4. check in the console if the api calling function works when the submit button is clicked.
+    
+    5. show the newly added task in the first task box(IDEAS).  
+
+
+14. Refactor and restructure
