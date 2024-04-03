@@ -12,7 +12,7 @@
        <!-- TODO: make this functionality working-[cdkDropListData]="ideas" -->
         <div  class="p-4 w-3/12" cdkDropList #ideasList="cdkDropList" [cdkDropListData]="ideas" [cdkDropListConnectedTo]="[todoList,doneList,researchList]"
          (cdkDropListDropped)="drop($event, '1')">
-          <app-task-type (emitCurrentItem)="receiveCurrentItem($event)" [tasks]="getTasksByStatus('1')"
+          <app-task-type [isAddTaskButton]="true" (emitCurrentItem)="receiveCurrentItem($event)" [tasks]="getTasksByStatus('1')"
             [title]="title[0].title" [bgColor]="bgColor[0].bgColor"></app-task-type>
         </div>
 
@@ -30,7 +30,7 @@
 
         <div class="p-4 w-3/12" cdkDropList #doneList="cdkDropList" [cdkDropListData]="done" [cdkDropListConnectedTo]="[todoList,ideasList,researchList]"
          (cdkDropListDropped)="drop($event, '4')">
-          <app-task-type (emitCurrentItem)="receiveCurrentItem($event)" [tasks]="getTasksByStatus('4')"
+          <app-task-type  (emitCurrentItem)="receiveCurrentItem($event)" [tasks]="getTasksByStatus('4')"
             [title]="title[3].title" [bgColor]="bgColor[3].bgColor"></app-task-type>
         </div>
 

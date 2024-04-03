@@ -14,6 +14,8 @@ export class TaskTypeComponent {
 
   currentItem: Task | undefined
 
+  @Input() isAddTaskButton: boolean = false;
+
   @Output() emitCurrentItem: EventEmitter<Task> = new EventEmitter<Task>();
 
   receiveCurrentItem(event: Task) {
