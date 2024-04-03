@@ -64,11 +64,11 @@
     
 10. ~~Check if everything works.~~
 
-11. Add a button next to the task box title.
+11. ~~Add a button next to the task box title.~~
 
-    1. Create "Add Task" button on the right of the task title.
+    1. ~~Create "Add Task" button on the right of the task title.~~
     
-    2. Add SVG icon on the left of the button text.
+    2. ~~Add SVG icon on the left of the button text.~~
 
 12. After clicking the button a popup should open.
     1. Design the UI of the popup including input field(s) and submit button in a different project.
