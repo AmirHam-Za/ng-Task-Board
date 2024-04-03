@@ -36,12 +36,6 @@ export class DashboardComponent {
     this._taskService.getTasksAsync().subscribe({
       next: (res: Task[]) => {
         this.tasks = res;
-
-        // TODO: this is not working as it should be, work with it
-        this.ideas = res.filter(task => task.status === '1');
-        this.research = res.filter(task => task.status === '2');
-        this.todo = res.filter(task => task.status === '3');
-        this.done = res.filter(task => task.status === '4');
       },
       error: (error: HttpErrorResponse) => {
         if (error.status === 404) {

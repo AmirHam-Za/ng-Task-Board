@@ -1,22 +1,22 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Task } from '../../interfaces/task.interface';
-
 @Component({
   selector: 'app-task-type',
   templateUrl: './task-type.component.html',
   styleUrl: './task-type.component.css'
 })
+
 export class TaskTypeComponent {
+
   @Input() tasks: Task[] = [];
-  @Input() color: string = '';
   @Input() title: string  = '';
   @Input() bgColor: string  = '';
-
-  currentItem: Task | undefined
 
   @Input() isAddTaskButton: boolean = false;
 
   @Output() emitCurrentItem: EventEmitter<Task> = new EventEmitter<Task>();
+
+  currentItem: Task | undefined
 
   receiveCurrentItem(event: Task) {
     this.currentItem = event

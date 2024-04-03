@@ -9,9 +9,9 @@ export class TaskComponent {
 
   @Input() tasks: Task[] = [];
 
-  currentItem: Task | undefined;
-
   @Output() emitCurrentItem: EventEmitter<Task> = new EventEmitter<Task>();
+
+  currentItem: Task | undefined;
 
   onDragStart(item: Task) {
     this.currentItem = item;

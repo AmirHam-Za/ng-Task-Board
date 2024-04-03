@@ -8,27 +8,27 @@
 
   <div class="container mx-auto  min-h-svh p-4 ">
     <div class=" p-8">
-      <div class="flex justify-center w-full flex-wrap">
-       <!-- TODO: make this functionality working-[cdkDropListData]="ideas" -->
-        <div  class="p-4 w-3/12" cdkDropList #ideasList="cdkDropList" [cdkDropListData]="ideas" [cdkDropListConnectedTo]="[todoList,doneList,researchList]"
+      <div cdkDropListGroup class="flex justify-center w-full flex-wrap">
+
+        <div  class="p-4 w-3/12" cdkDropList #ideasList="cdkDropList"
          (cdkDropListDropped)="drop($event, '1')">
           <app-task-type [isAddTaskButton]="true" (emitCurrentItem)="receiveCurrentItem($event)" [tasks]="getTasksByStatus('1')"
             [title]="title[0].title" [bgColor]="bgColor[0].bgColor"></app-task-type>
         </div>
 
-        <div class="p-4 w-3/12" cdkDropList #researchList="cdkDropList" [cdkDropListData]="research" [cdkDropListConnectedTo]="[todoList,doneList,ideasList]"
+        <div class="p-4 w-3/12" cdkDropList #researchList="cdkDropList"
          (cdkDropListDropped)="drop($event, '2')">
           <app-task-type (emitCurrentItem)="receiveCurrentItem($event)" [tasks]="getTasksByStatus('2')"
             [title]="title[1].title" [bgColor]="bgColor[1].bgColor"></app-task-type>
         </div>
 
-        <div class="p-4 w-3/12" cdkDropList #todoList="cdkDropList" [cdkDropListData]="todo" [cdkDropListConnectedTo]="[todoList,doneList,researchList]"
+        <div class="p-4 w-3/12" cdkDropList #todoList="cdkDropList"
          (cdkDropListDropped)="drop($event, '3')">
           <app-task-type (emitCurrentItem)="receiveCurrentItem($event)" [tasks]="getTasksByStatus('3')"
             [title]="title[2].title" [bgColor]="bgColor[2].bgColor"></app-task-type>
         </div>
 
-        <div class="p-4 w-3/12" cdkDropList #doneList="cdkDropList" [cdkDropListData]="done" [cdkDropListConnectedTo]="[todoList,ideasList,researchList]"
+        <div class="p-4 w-3/12" cdkDropList #doneList="cdkDropList"
          (cdkDropListDropped)="drop($event, '4')">
           <app-task-type  (emitCurrentItem)="receiveCurrentItem($event)" [tasks]="getTasksByStatus('4')"
             [title]="title[3].title" [bgColor]="bgColor[3].bgColor"></app-task-type>
