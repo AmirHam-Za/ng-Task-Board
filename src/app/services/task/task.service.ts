@@ -22,4 +22,15 @@ export class TaskService {
 
     return this._http.put<Task>(`${this.API_ENDPOINT}/tasks/${task.id}`, task);
   }
+
+  // TODO: id need to be type "number"
+  private generateTaskUniqueId(): string {
+    return Math.random().toString(36).substr(2, 9);
+  }
+  
+  addTaskAsync(task: Task): Observable<Task> {
+    task.id = this.generateTaskUniqueId()
+    return this._http.post<Task>(`${this.API_ENDPOINT}/tasks`, task);
+
+  }
 }

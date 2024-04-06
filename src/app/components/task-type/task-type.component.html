@@ -5,7 +5,7 @@
       <h1 class="text-gray-600 text-2xl font-semibold mb-4 ">{{ title }}</h1>
 
       <div *ngIf="isAddTaskButton">
-        <button class="font-semibold flex rounded p-1 h-[35px] text-gray-600">
+        <button (click)="toggleTaskAdd()" class="font-semibold flex rounded p-1 h-[35px] text-gray-600">
 
           <div class="">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -19,7 +19,46 @@
         </button>
       </div>
 
+        <!-- TODO:Modal ould be a component -->
+        <div *ngIf="isPopupOpen" class="fixed inset-0 z-50 flex items-center justify-center bg-gray-800 bg-opacity-50">
+          <div class="bg-green-100 p-3 rounded-lg ">
+
+            <div class="flex justify-end text-gray-600">
+              <button (click)="closeTaskPopup()">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+
+            <div *ngIf="successMessage">
+              {{ successMessage }}
+            </div>
+
+            <div class="flex justify-center">
+              <div class="modal p-2 rounded">
+                <form  #taskForm (submit)="addTask()">
+
+                  <div class="">
+                    <label for="taskName" class="text-gray-600 font-semibold" >Task Name</label><br>
+                    <input class="p-1 m-1" type="text" name="taskName" [(ngModel)]="newTask.taskName" placeholder="Add task here..." required>
+                  </div>
+
+                  <div class="">
+                    <button class="px-4 py-1 m-2 text-gray-600 border border-gray-600" type="submit">
+                      Submit
+                    </button>
+                  </div>
+
+                </form>
+
+              </div>
+            </div>
+
+        </div>
+      </div>
     </div>
+
     <div class=" flex flex-col gap-2">
 
       <app-task [tasks]="tasks" (emitCurrentItem)="receiveCurrentItem($event)"></app-task>

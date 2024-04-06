@@ -8,6 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { TaskTypeComponent } from './components/task-type/task-type.component';
 import { TaskComponent } from './components/task/task.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -16,12 +17,15 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     TaskTypeComponent,
     TaskComponent,
   ],
+
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    DragDropModule
+    DragDropModule,
+    FormsModule,
   ],
+  
   providers: [],
   bootstrap: [AppComponent]
 })
