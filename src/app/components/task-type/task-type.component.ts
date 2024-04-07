@@ -27,7 +27,6 @@ export class TaskTypeComponent {
 
    openTaskAddPopup() {
     this.isPopupOpen = true;
-    console.log(this.isPopupOpen);
   }
 }
 

@@ -1,30 +1,39 @@
 <div *ngIf="isPopupOpen" class="fixed inset-0 z-50 flex items-center justify-center bg-gray-800 bg-opacity-50">
-  <div class="bg-white p-6 rounded-lg shadow-xl">
+  <div class="bg-green-100 p-3 rounded-lg ">
+
+    <div class="flex justify-end text-gray-600">
+      <button (click)="closePopup()">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+
+    <div *ngIf="successMessage">
+      {{ successMessage }}
+    </div>
+
     <div class="flex justify-center">
-      <div class="modal bg-gray-100 p-4 m-2 rounded">
-        <form #taskForm (submit)="addTask()">
+      <div class="modal p-2 rounded">
+        <form  [formGroup]="addTaskForm" (submit)="addTask()">
 
           <div class="">
-            <input class="p-1 m-1" type="text" name="taskName" [(ngModel)]="newTask.taskName" placeholder="Task Name" required>
+            <label for="taskName" class="text-gray-600 font-semibold" >Task Name
+            </label><br>
+            <input class="p-1 m-1" type="text" formControlName="taskName"  [(ngModel)]="newTask.taskName" placeholder="Add task here..." required>
           </div>
 
           <div class="">
-            <input class="p-1 m-1" type="number" name="status" [(ngModel)]="newTask.status" placeholder="Status" required>
-          </div>
-
-          <div class="">
-
-            <button class="px-4 py-1 m-2 bg-gray-500 hover:bg-gray-600 text-white font-bold rounded-lg shadow-md" type="submit">
-
-
-
-
-          </button>
+            <button [disabled]="addTaskForm.invalid" class="px-4 py-1 m-2 text-gray-600 border border-gray-600" type="submit">
+              Submit
+            </button>
           </div>
 
         </form>
-        <button class="" (click)="closePopup()">cancel</button>
+
       </div>
     </div>
-  </div>
+
 </div>
+</div>
+

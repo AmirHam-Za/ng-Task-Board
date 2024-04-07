@@ -37,14 +37,22 @@ export class AddTaskModalComponent {
 
   closePopup() {
     this.isPopupOpen = false;
-    console.log('isPopupOpen in task ADD>',this.isPopupOpen);
-  };
+  }
+  
+  addTaskForm = new FormGroup({
+    taskName: new FormControl('', [
+      Validators.required,
+    ])
+  });
 
+  get taskName(){
+    return this.addTaskForm.get('taskName')
+  }
 
   addTask(){
     this._taskService.addTaskAsync(this.newTask).subscribe(() => {
-      this.newTask.taskName = '';
       this.successMessage = 'Task added successfully';
+      this.newTask.taskName = '';
     });
 
   }
