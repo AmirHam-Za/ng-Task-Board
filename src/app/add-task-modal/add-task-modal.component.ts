@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Task } from '../interfaces/task.interface';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { TaskService } from '../services/task/task.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-add-task-modal',
@@ -38,7 +39,7 @@ export class AddTaskModalComponent {
   closePopup() {
     this.isPopupOpen = false;
   }
-  
+
   addTaskForm = new FormGroup({
     taskName: new FormControl('', [
       Validators.required,
@@ -50,11 +51,28 @@ export class AddTaskModalComponent {
   }
 
   addTask(){
-    this._taskService.addTaskAsync(this.newTask).subscribe(() => {
-      this.successMessage = 'Task added successfully';
-      this.newTask.taskName = '';
-    });
 
+    const newTaskName = this.newTask.taskName;
+
+    if (newTaskName != null) {
+      this._taskService.addTaskAsync(this.newTask).subscribe({
+
+        next: () => {
+          this.successMessage = 'Task added successfully!';
+          this.newTask.taskName = '';
+        },
+
+        error: (error: HttpErrorResponse) => {
+          if (error.status === 404) {
+            console.log(`Add Task Error occurred: ${error.statusText}-${error.status}`);
+          }
+        }
+
+      });
+
+    } else {
+      console.error('Task not found');
+    }
   }
 
 }
