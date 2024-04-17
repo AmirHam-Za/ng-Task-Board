@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Task } from '@interfaces/task.interface';
 import { Observable } from 'rxjs';
-import { Task } from '../../interfaces/task.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -27,7 +27,7 @@ export class TaskService {
   private generateTaskUniqueId(): string {
     return Math.random().toString(36).substr(2, 9);
   }
-  
+
   addTaskAsync(task: Task): Observable<Task> {
     task.id = this.generateTaskUniqueId()
     return this._http.post<Task>(`${this.API_ENDPOINT}/tasks`, task);

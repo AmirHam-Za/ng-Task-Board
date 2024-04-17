@@ -1,16 +1,15 @@
 import { Component } from '@angular/core';
-import { TaskService } from '../../services/task/task.service';
-import { Task } from '../../interfaces/task.interface';
 import { HttpErrorResponse } from '@angular/common/http';
-import { TITLE_OBJECTS } from '../../constant/task-type';
-import { CdkDragDrop, moveItemInArray, transferArrayItem, CdkDrag, CdkDropList } from '@angular/cdk/drag-drop';
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
+import { TaskService } from '@services/task/task.service';
+import { Task } from '@interfaces/task.interface';
+import { TITLE_OBJECTS } from '@constant/task-type';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css',
 })
 
-// TODO: review & inspect overall code for improvement & bug fixing
 export class DashboardComponent {
   tasks: Task[] = [];
   title: any;

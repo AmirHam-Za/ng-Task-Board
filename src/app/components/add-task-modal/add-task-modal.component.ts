@@ -1,8 +1,8 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Task } from '../interfaces/task.interface';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { TaskService } from '../services/task/task.service';
 import { HttpErrorResponse } from '@angular/common/http';
+import { TaskService } from '@services/task/task.service';
+import { Task } from '@interfaces/task.interface';
 
 @Component({
   selector: 'app-add-task-modal',

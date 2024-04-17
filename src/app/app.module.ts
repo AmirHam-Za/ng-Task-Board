@@ -9,7 +9,7 @@ import { TaskTypeComponent } from './components/task-type/task-type.component';
 import { TaskComponent } from './components/task/task.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { AddTaskModalComponent } from './add-task-modal/add-task-modal.component';
+import { AddTaskModalComponent } from './components/add-task-modal/add-task-modal.component';
 
 @NgModule({
   declarations: [

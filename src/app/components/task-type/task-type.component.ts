@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Task } from '../../interfaces/task.interface';
+import { Task } from '@interfaces/task.interface';
 @Component({
   selector: 'app-task-type',
   templateUrl: './task-type.component.html',
